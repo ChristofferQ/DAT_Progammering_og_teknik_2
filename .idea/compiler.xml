@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="devops-starter" options="-endorseddirs &quot;C:\Users\Christoffer\Documents\CPH Business\3. Semester\Eksamen\Exam-prep\SP1-exam-preparation-main\Backend\target/endorsed&quot;" />
+      <module name="devops-starter" options="-endorseddirs &quot;C:\Users\Christoffer\Documents\CPH Business\3. Semester\Eksamen\DAT Programmering og teknik 2\Backend\target/endorsed&quot;" />
     </option>
   </component>
 </project>
