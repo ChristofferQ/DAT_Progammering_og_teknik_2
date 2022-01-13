@@ -60,6 +60,9 @@ function App() {
                          <Route exact path="/race">
                             <Race />
                          </Route>
+                        <Route exact path="/createRace">
+                            <Race />
+                        </Route>
                         <Route path="/login">
                                 <Login/>
                         </Route>

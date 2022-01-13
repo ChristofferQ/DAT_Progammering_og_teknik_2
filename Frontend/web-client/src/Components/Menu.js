@@ -27,6 +27,12 @@ function Menu () {
                     <li className="nav-item">
                         <NavLink exact active className="active nav-link btn btn-primary text-white" to="/race">Races</NavLink>
                     </li>
+                    <li className="nav-item">
+                        <NavLink exact active className="active nav-link" to="#"></NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink exact active className="active nav-link btn btn-primary text-white" to="/createRace">Create Race</NavLink>
+                    </li>
                 </ul>
                 <form className="d-flex">
                     <NavLink exact active className="active nav-link text-black" to="#">

@@ -1,6 +1,8 @@
 package rest;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import dtos.RaceDTO;
 import entities.Race;
 import entities.User;
 
@@ -12,10 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.SecurityContext;
+import javax.ws.rs.core.*;
 import javax.ws.rs.PathParam;
 
 import utils.EMF_Creator;
@@ -88,12 +87,26 @@ public class RenameMeResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("race")
+    //Outcommented while working
+    //@RolesAllowed("user")
     public List<Race> ShowAllRaces() throws SQLException {
         EntityManager em = EMF.createEntityManager();
         TypedQuery <Race> query = em.createQuery("SELECT r FROM Race r", Race.class);
         List<Race> result = query.getResultList();
         return result;
     }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("createRace")
+    public String createRace(String race){
+        RaceDTO r = gson.fromJson(race, RaceDTO.class);
+        Race rAdded = Facade.createRace
+    }
+
+
+
 
 
 }
