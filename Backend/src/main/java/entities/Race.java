@@ -40,9 +40,6 @@ public class Race implements Serializable {
     @Column(name = "location")
     private String location;
 
-    @ManyToMany
-    private List<Car> carList;
-
     public Race() { }
 
     public Race(int id, String name, String date, String time, String location) {
@@ -92,7 +89,6 @@ public class Race implements Serializable {
     public void setLocation(String location) {
         this.location = location;
     }
-
 
 
     public Race updateFromDto(RaceDTO r) {

@@ -42,7 +42,12 @@ import java.util.Set;
         private List<Driver> driverList;
 
         @ManyToMany
-        private List<Race> raceList;
+        @JoinTable(
+                name = "Joined table",
+                joinColumns = @JoinColumn(name = "car_id", referencedColumnName = "id"),
+                inverseJoinColumns = @JoinColumn(name = "race_id", referencedColumnName = "id"))
+        private List<Race> races;
+
 
 
 
