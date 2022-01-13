@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dtos.RaceDTO;
 import dtos.RacesDTO;
+import entities.Car;
 import entities.Race;
 import entities.User;
 
@@ -11,8 +12,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
+import javax.decorator.Delegate;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -140,6 +143,22 @@ public class RenameMeResource {
         TypedQuery <Race> query = em.createQuery("SELECT r FROM Race r", Race.class);
         List<Race> result = query.getResultList();
         return result;
+    }
+
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("delete")
+    public String deleteCar(int id) {
+        EntityManager em = EMF.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            Query query = em.createQuery("DELETE FROM Car c WHERE c.id = :id");
+            query.setParameter("id", id);
+            query.executeUpdate();
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        } return "{\"status\": \"removed\"}";
     }
 
 //    @POST
