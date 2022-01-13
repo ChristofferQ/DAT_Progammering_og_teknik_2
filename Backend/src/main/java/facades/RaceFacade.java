@@ -1,11 +1,13 @@
 package facades;
 
 import dtos.RaceDTO;
+import dtos.RacesDTO;
 import entities.Race;
-import groovy.lang.MissingFieldException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class RaceFacade implements IRaceFacade {
 
@@ -41,6 +43,23 @@ public class RaceFacade implements IRaceFacade {
     }
 
     @Override
+    public RaceDTO editRace(RaceDTO r) throws Exception {
+        if (r.getName() == null || r.getDate() == null || r.getLocation() == null) {
+            throw new Exception();
+        }
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            Race tmpRace = em.find(Race.class, r.getId());
+            tmpRace = tmpRace.updateFromDto(r);
+            em.getTransaction().commit();
+            return new RaceDTO(tmpRace);
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
     public RaceDTO deleteRace(int id) throws Exception {
         EntityManager em = emf.createEntityManager();
         Race race;
@@ -67,5 +86,13 @@ public class RaceFacade implements IRaceFacade {
         } else {
             return new RaceDTO(r);
         }
+    }
+
+    @Override
+    public RacesDTO getAllRaces() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Race> query = em.createQuery("SELECT r FROM Race r", Race.class);
+        List<Race> races = query.getResultList();
+        return new RacesDTO(races);
     }
 }

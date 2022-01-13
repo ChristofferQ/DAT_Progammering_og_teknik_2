@@ -1,5 +1,7 @@
 package entities;
 
+import dtos.RaceDTO;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -84,5 +86,12 @@ public class Race implements Serializable {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Race updateFromDto(RaceDTO r) {
+        this.name = r.getName();
+        this.date = r.getDate();
+        this.location = r.getLocation();
+        return this;
     }
 }

@@ -84,6 +84,14 @@ public class RenameMeResource {
         return result;
     }
 
+
+
+    // For Race
+
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("race")
@@ -96,14 +104,14 @@ public class RenameMeResource {
         return result;
     }
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("createRace")
-    public String createRace(String race){
-        RaceDTO r = gson.fromJson(race, RaceDTO.class);
-        Race rAdded = Facade.createRace
-    }
+//    @POST
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("createRace")
+//    public String createRace(String race){
+//        RaceDTO r = gson.fromJson(race, RaceDTO.class);
+//        Race rAdded = Facade.createRace
+//    }
 
 
 
