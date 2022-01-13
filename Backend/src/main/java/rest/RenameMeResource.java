@@ -142,4 +142,13 @@ public class RenameMeResource {
         return result;
     }
 
+//    @POST
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Path("createRace")
+//    public void createRace(){
+//        RaceDTO rDTO = gson.fromJson(rDTO, RaceDTO.class);
+//        raceFacade.createRace(rDTO);
+//    }
+
 }

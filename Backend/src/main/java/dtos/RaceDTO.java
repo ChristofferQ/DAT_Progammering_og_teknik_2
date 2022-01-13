@@ -12,7 +12,13 @@ public class RaceDTO {
 
     public RaceDTO() { }
 
-    public RaceDTO(Race r) { }
+    public RaceDTO(Race r) {
+        this.id = r.getId();
+        this.name = r.getName();
+        this.date = r.getDate();
+        this.time = r.getTime();
+        this.location = r.getLocation();
+    }
 
     public RaceDTO(int id, String name, String date, String time, String location) {
         this.id = id;
