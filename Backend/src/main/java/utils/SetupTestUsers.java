@@ -1,9 +1,7 @@
 package utils;
 
 
-import entities.Race;
-import entities.Role;
-import entities.User;
+import entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -29,6 +27,12 @@ public class SetupTestUsers {
     Race race1 = new Race(1, "RaceName1", "RaceDate1", "RaceTime1","RaceLocation1");
     Race race2 = new Race(1, "RaceName2", "RaceDate2", "RaceTime2","RaceLocation2");
 
+    Car car1 = new Car(1,"CarName1","CarBrand1","CarMake1","CarYear1");
+    Car car2 = new Car(2,"CarName2","CarBrand2","CarMake2","CarYear2");
+
+    Driver driver1 = new Driver (1,"DriverName1","DriverBirthYear1","DriverGender1");
+    Driver driver2 = new Driver (2,"DriverName2","DriverBirthYear2","DriverGender2");
+
 
 
 
@@ -51,6 +55,10 @@ public class SetupTestUsers {
     em.persist(both);
     em.persist(race1);
     em.persist(race2);
+    em.persist(car1);
+    em.persist(car2);
+    em.persist(driver1);
+    em.persist(driver2);
     em.getTransaction().commit();
     System.out.println("PW: " + user.getUserPass());
     System.out.println("Testing user with OK password: " + user.verifyPassword("test"));

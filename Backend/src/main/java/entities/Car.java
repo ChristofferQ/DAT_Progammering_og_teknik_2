@@ -3,8 +3,11 @@ package entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-    @Entity
+@Entity
     @Table(name = "car")
     public class Car implements Serializable {
 
@@ -35,6 +38,14 @@ import java.io.Serializable;
         @Column(name = "year")
         private String year;
 
+        @OneToMany(mappedBy = "car", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+        private List<Driver> driverList;
+
+        @ManyToMany
+        private List<Race> raceList;
+
+
+
         public Car() { }
 
         public Car(int id, String name, String brand, String make, String year) {
@@ -44,6 +55,7 @@ import java.io.Serializable;
             this.make = make;
             this.year = year;
         }
+
 
         public int getId() {
             return id;
@@ -84,4 +96,5 @@ import java.io.Serializable;
         public void setYear(String year) {
             this.year = year;
         }
+
     }

@@ -5,7 +5,9 @@ import dtos.RaceDTO;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "race")
@@ -37,6 +39,9 @@ public class Race implements Serializable {
     @NotNull
     @Column(name = "location")
     private String location;
+
+    @ManyToMany
+    private List<Car> carList;
 
     public Race() { }
 
@@ -87,6 +92,8 @@ public class Race implements Serializable {
     public void setLocation(String location) {
         this.location = location;
     }
+
+
 
     public Race updateFromDto(RaceDTO r) {
         this.name = r.getName();

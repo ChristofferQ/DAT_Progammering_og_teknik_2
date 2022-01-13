@@ -3,6 +3,7 @@ package entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "driver")
@@ -34,6 +35,9 @@ public class Driver implements Serializable {
     @NotNull
     @Column(name = "location")
     private String location;
+
+    @ManyToOne
+    private Car car;
 
     public Driver() {
     }
