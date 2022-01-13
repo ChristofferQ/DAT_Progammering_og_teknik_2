@@ -20,6 +20,7 @@ import React, { useState,useEffect } from "react";
 import facade from "./ApiFacade";
 import Home from "./Components/Home";
 import Race from "./Components/Race";
+import RaceCar from "./Components/RaceCar";
 
 
 
@@ -61,7 +62,13 @@ function App() {
                             <Race />
                          </Route>
                         <Route exact path="/addrace">
-                            <Race />
+                            <addrace />
+                        </Route>
+                        <Route exact path="/delete">
+                            <delete />
+                        </Route>
+                        <Route exact path="/racecar">
+                            <RaceCar />
                         </Route>
                         <Route path="/login">
                                 <Login/>

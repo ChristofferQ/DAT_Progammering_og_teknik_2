@@ -110,7 +110,7 @@ public class RenameMeResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("addRace")
+    @Path("createRace")
 //    //Outcommented while working
 //    @RolesAllowed("admin")
     public Response addRace(String race) throws Exception{
@@ -145,15 +145,25 @@ public class RenameMeResource {
         return result;
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("racecar")
+    public List<Race> ShowRaceCar() throws SQLException {
+        EntityManager em = EMF.createEntityManager();
+        Query query = em.createQuery("SELECT r, c FROM Race r, Car c WHERE r.id = c.id");
+        List<Race> result = query.getResultList();
+        return result;
+    }
+
+
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Path("delete")
-    public String deleteCar(int id) {
+    public String deleteCar() {
         EntityManager em = EMF.createEntityManager();
         try {
             em.getTransaction().begin();
             Query query = em.createQuery("DELETE FROM Car c WHERE c.id = :id");
-            query.setParameter("id", id);
             query.executeUpdate();
             em.getTransaction().commit();
         } finally {
