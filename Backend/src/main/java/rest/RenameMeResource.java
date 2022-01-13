@@ -145,8 +145,8 @@ public class RenameMeResource {
 //    @POST
 //    @Produces(MediaType.APPLICATION_JSON)
 //    @Consumes(MediaType.APPLICATION_JSON)
-//    @Path("createRace")
-//    public void createRace(){
+//    @Path("addrace")
+//    public void addRace(){
 //        RaceDTO rDTO = gson.fromJson(rDTO, RaceDTO.class);
 //        raceFacade.createRace(rDTO);
 //    }
