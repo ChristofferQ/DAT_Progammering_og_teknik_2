@@ -18,6 +18,8 @@ import NoMatch from "./Components/NoMatch";
 
 import React, { useState,useEffect } from "react";
 import facade from "./ApiFacade";
+import Home from "./Components/Home";
+import Race from "./Components/Race";
 
 
 
@@ -52,17 +54,14 @@ function App() {
                 (<div>
                     <Menu />
                     <Switch>
-                         <Route exact path="/menu-one">
-                         <MenuOne />
+                         <Route exact path="/">
+                         <Home />
                          </Route>
-                         <Route exact path="/menu-two">
-                            <MenuTwo />
+                         <Route exact path="/race">
+                            <Race />
                          </Route>
                         <Route path="/login">
                                 <Login/>
-                        </Route>
-                        <Route exact path="/menu-three">
-                             <MenuThree />
                         </Route>
                         <NoMatch />
                     </Switch>

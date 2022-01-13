@@ -1,6 +1,7 @@
 package rest;
 
 import com.google.gson.Gson;
+import entities.Race;
 import entities.User;
 
 import java.sql.*;
@@ -81,6 +82,16 @@ public class RenameMeResource {
         EntityManager em = EMF.createEntityManager();
         TypedQuery <User> query = em.createQuery("SELECT u from User u where u.userName=:username", entities.User.class);
         List<User> result = query.getResultList();
+        return result;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("race")
+    public List<Race> ShowAllRaces() throws SQLException {
+        EntityManager em = EMF.createEntityManager();
+        TypedQuery <Race> query = em.createQuery("SELECT r FROM Race r", Race.class);
+        List<Race> result = query.getResultList();
         return result;
     }
 

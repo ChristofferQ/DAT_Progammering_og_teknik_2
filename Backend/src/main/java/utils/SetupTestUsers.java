@@ -1,6 +1,7 @@
 package utils;
 
 
+import entities.Race;
 import entities.Role;
 import entities.User;
 
@@ -25,6 +26,11 @@ public class SetupTestUsers {
     User admin = new User("admin", "12345");
     User both = new User("user_admin", "1234");
 
+    Race race1 = new Race(1, "RaceName1", "RaceDate1", "RaceTime1","RaceLocation1");
+    Race race2 = new Race(1, "RaceName2", "RaceDate2", "RaceTime2","RaceLocation2");
+
+
+
 
 
     if(admin.getUserPass().equals("test")||user.getUserPass().equals("test")||both.getUserPass().equals("test"))
@@ -43,6 +49,8 @@ public class SetupTestUsers {
     em.persist(user);
     em.persist(admin);
     em.persist(both);
+    em.persist(race1);
+    em.persist(race2);
     em.getTransaction().commit();
     System.out.println("PW: " + user.getUserPass());
     System.out.println("Testing user with OK password: " + user.verifyPassword("test"));
