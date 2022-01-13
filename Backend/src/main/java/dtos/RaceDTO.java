@@ -7,16 +7,18 @@ public class RaceDTO {
     private int id;
     private String name;
     private String date;
+    private String time;
     private String location;
 
     public RaceDTO() { }
 
     public RaceDTO(Race r) { }
 
-    public RaceDTO(int id, String name, String date, String location) {
+    public RaceDTO(int id, String name, String date, String time, String location) {
         this.id = id;
         this.name = name;
         this.date = date;
+        this.time = time;
         this.location = location;
     }
 
@@ -42,6 +44,14 @@ public class RaceDTO {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getLocation() {

@@ -3,6 +3,7 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dtos.RaceDTO;
+import dtos.RacesDTO;
 import entities.Race;
 import entities.User;
 
@@ -17,6 +18,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import javax.ws.rs.PathParam;
 
+import facades.IRaceFacade;
+import facades.RaceFacade;
 import utils.EMF_Creator;
 
 /**
@@ -29,6 +32,7 @@ public class RenameMeResource {
     Gson gson = new Gson();
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
+    private final RaceFacade raceFacade = RaceFacade.getRaceFacade(EMF);
 
     @Context
     private UriInfo context;
@@ -86,12 +90,46 @@ public class RenameMeResource {
 
 
 
-    // For Race
+    // Endpoints For Race
 
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response
+    /* Tried adding GET, POST and PUT for race using DTOs, this doesn't work and breaks the other endpoints.
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("race")
+//    //Outcommented while working
+//    @RolesAllowed("user")
+    public String getAllRaces(){
+        RacesDTO races = new RacesDTO(raceFacade.getAllRaces());
+        return gson.toJson(races.getAll());
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("addRace")
+//    //Outcommented while working
+//    @RolesAllowed("admin")
+    public Response addRace(String race) throws Exception{
+        RaceDTO r = gson.fromJson(race, RaceDTO.class);
+        r = raceFacade.addRace(r.getId(), r.getName(), r.getDate(), r.getTime(), r.getLocation());
+        return Response.ok(gson.toJson(r),MediaType.APPLICATION_JSON).build();
+    }
+
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("editRace")
+    public Response editRace (int id, String race) throws Exception{
+        RaceDTO r = gson.fromJson(race, RaceDTO.class);
+        r.setId(id);
+        r = raceFacade.editRace(r);
+        return Response.ok(gson.toJson(r), MediaType.APPLICATION_JSON).build();
+    }
+
+    */
+
+    // This fetches from the database without using DTOs. It's working, but isn't the right way to do things.
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("race")
@@ -103,18 +141,5 @@ public class RenameMeResource {
         List<Race> result = query.getResultList();
         return result;
     }
-
-//    @POST
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("createRace")
-//    public String createRace(String race){
-//        RaceDTO r = gson.fromJson(race, RaceDTO.class);
-//        Race rAdded = Facade.createRace
-//    }
-
-
-
-
 
 }
