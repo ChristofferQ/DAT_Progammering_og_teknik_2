@@ -96,13 +96,13 @@ public class RaceFacade implements IRaceFacade {
         return new RacesDTO(races);
     }
 
-    public void addRace(RaceDTO rDTO) {
-        EntityManager em = emf.createEntityManager();
-
-        Race race = new Race(rDTO.getId(), rDTO.getName(), rDTO.getDate(), rDTO.getTime(), rDTO.getLocation());
-
-        em.getTransaction().begin();
-        em.getTransaction().commit();
-    }
+//    public void addRace(RaceDTO rDTO) {
+//        EntityManager em = emf.createEntityManager();
+//
+//        Race race = new Race(rDTO.getId(), rDTO.getName(), rDTO.getDate(), rDTO.getTime(), rDTO.getLocation());
+//
+//        em.getTransaction().begin();
+//        em.getTransaction().commit();
+//    }
 
 }

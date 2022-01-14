@@ -23,5 +23,4 @@ public class UserDTO {
         this.user_name = user_name;
     }
 
-
 }

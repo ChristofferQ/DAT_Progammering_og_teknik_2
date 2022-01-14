@@ -3,7 +3,6 @@ package entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "driver")
@@ -88,4 +87,5 @@ public class Driver implements Serializable {
     public void setLocation(String location) {
         this.location = location;
     }
+
 }

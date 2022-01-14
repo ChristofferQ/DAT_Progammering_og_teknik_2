@@ -57,7 +57,7 @@ public class RenameMeResource {
 
         EntityManager em = EMF.createEntityManager();
         try {
-            TypedQuery<User> query = em.createQuery ("select u from User u",entities.User.class);
+            TypedQuery<User> query = em.createQuery("select u from User u", entities.User.class);
             List<User> users = query.getResultList();
             return "[" + users.size() + "]";
         } finally {
@@ -86,11 +86,10 @@ public class RenameMeResource {
     @Path("user")
     public List<User> GetInfoFromUser() throws SQLException {
         EntityManager em = EMF.createEntityManager();
-        TypedQuery <User> query = em.createQuery("SELECT u from User u where u.userName=:username", entities.User.class);
+        TypedQuery<User> query = em.createQuery("SELECT u from User u where u.userName=:username", entities.User.class);
         List<User> result = query.getResultList();
         return result;
     }
-
 
 
     // Endpoints For Race
@@ -140,11 +139,12 @@ public class RenameMeResource {
     //@RolesAllowed("user")
     public List<Race> ShowAllRaces() throws SQLException {
         EntityManager em = EMF.createEntityManager();
-        TypedQuery <Race> query = em.createQuery("SELECT r FROM Race r", Race.class);
+        TypedQuery<Race> query = em.createQuery("SELECT r FROM Race r", Race.class);
         List<Race> result = query.getResultList();
         return result;
     }
 
+    // This is showing JSON in the backend using "api/info/racecar" however it's not how I want it and I'm unsure how to handle the data.
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("racecar")
@@ -155,7 +155,7 @@ public class RenameMeResource {
         return result;
     }
 
-
+    // I couldn't get Postman to test this and I'm unsure how to create a Test for it.
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Path("delete")
@@ -168,16 +168,8 @@ public class RenameMeResource {
             em.getTransaction().commit();
         } finally {
             em.close();
-        } return "{\"status\": \"removed\"}";
+        }
+        return "{\"status\": \"removed\"}";
     }
-
-//    @POST
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Path("addrace")
-//    public void addRace(){
-//        RaceDTO rDTO = gson.fromJson(rDTO, RaceDTO.class);
-//        raceFacade.createRace(rDTO);
-//    }
 
 }
